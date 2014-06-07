@@ -1,0 +1,3 @@
+[submodule "lib/Condorcet"]
+	path = lib/Condorcet
+	url = https://github.com/julien-boudry/Condorcet_Schulze-PHP_Class.git
