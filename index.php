@@ -18,11 +18,11 @@
 	
 	foreach ($etapes as $value)
 	{
-		if ( substr( $value, 0, 1 ) === '*' )
+		if ( substr( $value, 0, 3 ) === '-- ' )
 		{
 
 			echo '<li>';
-	     	     	     echo '<a href="'.$value.'">'.str_replace('* ', '', $value).'</a>' ;
+	     	     	     echo '<a href="'.$value.'">'.str_replace('-- ', '', $value).'</a>' ;
 			echo '</li>';
 		}
 	}
