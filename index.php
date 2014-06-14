@@ -22,7 +22,7 @@
 		{
 
 			echo '<li>';
-	     	     	     echo '<a href="'.$value.'">'.str_replace('-- ', '', $value).'</a>' ;
+	     	     	     echo '<a href="'.$value.'">'.str_replace(array('-- ','.php'), array('',''), $value).'</a>' ;
 			echo '</li>';
 		}
 	}

@@ -21,8 +21,10 @@ define('GROUPE', 'Tour 3 - Poule Debussy');
 	// Votants
 	$calculator->addVote('D4=F3>D2=H4=C3', 'Asinius Pollion');
 	$calculator->addVote('F3>C3=H4>D2>D4', 'Draffin');
-	$calculator->addVote('D2>C3>F3>D4>H4', 'Siegmund');	
-	$calculator->addVote('F3 > D4 > H4 = D2 > C3', 'Pipus');	
+	$calculator->addVote('D2>C3>F3>D4>H4', 'Siegmund');
+	$calculator->addVote('F3 > D4 > H4 = D2 > C3', 'Pipus');
+	$calculator->addVote('H4>C3>F3>D2>D4', 'Resigned');
+	$calculator->addVote('H4>D4=D2>F3', 'warren 60');
 
 		// Note, le renseignement du dernier rang de chaque vote est optionnel. Il sera automatiquement déduit si absent, j'ai d'ailleur procédé ainsi ci-dessus.
 
