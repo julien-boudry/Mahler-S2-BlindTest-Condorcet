@@ -127,7 +127,7 @@ $( ".accordion" ).accordion({ active: false, collapsible: true });
 	
 	<section class="method">
 
-		<h2>Classement par défaut (de <a target="blank" href="http://en.wikipedia.org/wiki/Schulze_method"><?php echo $calculator->getMethod() ?></a>) :</h2>
+		<h2>Classement par défaut (de <a target="blank" href="http://en.wikipedia.org/wiki/Schulze_method"><?php echo $calculator->getMethod(); ?></a>) :</h2>
 
 		<pre>
 		<?php print_r($calculator->getResult()); ?>
