@@ -22,8 +22,8 @@ define('GROUPE', 'Finale');
 	// Votants
 		// Memoire format : tag,tag2 || vote
 	$calculator->parseVotes('
-
-');
+	
+	');
 
 
 		// Note, le renseignement du dernier rang de chaque vote est optionnel. Il sera automatiquement déduit si absent, j'ai d'ailleur procédé ainsi ci-dessus.
