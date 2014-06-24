@@ -7,24 +7,24 @@ require_once 'include'.DIRECTORY_SEPARATOR.'head.php';
 
 // §§§ EN AVANT §§§ EDITER LES LIGNES SUIVANTES
 
-define('GROUPE', 'Tour 3 - Poule Eduard Hanslick');
+define('GROUPE', 'Finale');
 
 	
 	// Versions en lice
-	$calculator->addCandidate('C1');
-	$calculator->addCandidate('E1');
-	$calculator->addCandidate('E2');
+	$calculator->addCandidate('B2');
+	$calculator->addCandidate('F3');
 	$calculator->addCandidate('G1');
 	$calculator->addCandidate('G3');
+	$calculator->addCandidate('H1');
+	$calculator->addCandidate('H4');
 
 
 	// Votants
-	$calculator->addVote('G3=G1>C1>E1=E2', 'Draffin');
-	$calculator->addVote('E1 > G3 > G1 > C1 > E2', 'Resigned');
-	$calculator->addVote('E2=G1>G3>C1>E1', 'Asinius Pollion');
-	$calculator->addVote('G3>G1=E1>C1', 'Siegmund');
-	$calculator->addVote('G3 > E2 > G1 > C1 > E1', 'Pipus');
-	$calculator->addVote('G3 > G1 > E2 > C1', 'warren 60');
+		// Memoire format : tag,tag2 || vote
+	$calculator->parseVotes('
+
+');
+
 
 		// Note, le renseignement du dernier rang de chaque vote est optionnel. Il sera automatiquement déduit si absent, j'ai d'ailleur procédé ainsi ci-dessus.
 
