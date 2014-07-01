@@ -314,6 +314,18 @@ $( ".accordion" ).accordion({ active: false, collapsible: true });
 			 </pre>
 		</div>
 	</div>
+
+		<h3>Temps d'execution :</h3>
+		<strong style="color:red;">
+			<?php 
+				echo (\Condorcet\KemenyYoung::$_maxCandidates > 5 && $calculator->countCandidates() > 5) ? 'ATTENTION : <em>KemenyYoung sur plus de 5 candidats ralenti fortement le systéme.</em><br><br>' : '' ;
+			?>
+		</strong>
+		<strong style="color:green;">
+			<?php
+				echo number_format(microtime(true) - START, 3) . 'seconde(s) <br>';
+			?>
+		</strong <br><br>
  
 <h4>Dump de l'objet :</h4>
 

@@ -10,4 +10,8 @@ use Condorcet\Condorcet ;
 
 require_once 'lib'.DIRECTORY_SEPARATOR.'Condorcet'.DIRECTORY_SEPARATOR.'lib'.DIRECTORY_SEPARATOR.'Condorcet'.DIRECTORY_SEPARATOR.'Condorcet.php' ;
 
+define('START', microtime(true));
+
+\Condorcet\KemenyYoung::setMaxCandidates(6);
+
 $calculator = new Condorcet () ;

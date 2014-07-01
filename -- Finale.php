@@ -11,18 +11,20 @@ define('GROUPE', 'Finale');
 
 	
 	// Versions en lice
-	$calculator->addCandidate('B2');
-	$calculator->addCandidate('F3');
-	$calculator->addCandidate('G1');
-	$calculator->addCandidate('G3');
-	$calculator->addCandidate('H1');
-	$calculator->addCandidate('H4');
+	$calculator->parseCandidates('
+		B2
+		H4
+		F3 
+		H1
+		G1
+		G3
+	');
 
 
 	// Votants
 		// Memoire format : tag,tag2 || vote
 	$calculator->parseVotes('
-	
+	Pipus || G3 > G1 > H1 > F3 > B2 > H4
 	');
 
 
