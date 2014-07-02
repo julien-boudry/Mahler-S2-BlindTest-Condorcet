@@ -1,4 +1,17 @@
-<?php use Condorcet\Condorcet ; ?>
+<?php 
+	use Condorcet\Condorcet ;
+
+	function get_timer ($html)
+	{
+		$timer = number_format(microtime(true) - START, 4) ;
+		$out = str_replace('{timer}', ($timer >= 2) ? $timer.' secondes' : $timer.' seconde', $html);
+
+		return $out ;
+	}
+
+	ob_start('get_timer');
+
+ ?>
 <!doctype html>
  <html lang="fr">
  <head>
@@ -35,7 +48,7 @@ $( ".accordion" ).accordion({ active: false, collapsible: true });
  </head>
  <body>
  
-	<em>Calculé grâce à <a href="https://github.com/julien-boudry/Condorcet_Schulze-PHP_Class" target="_blank">Condorcet Class</a> : <span style="font-weight:bold;">Version : <?php echo $calculator->getObjectVersion(); ?></span>
+	<em>Calculé grâce à <a href="https://github.com/julien-boudry/Condorcet_Schulze-PHP_Class" target="_blank">Condorcet Class</a> : <span style="font-weight:bold;">Version : <?php echo $calculator->getClassVersion(); ?></span>
 	<br> Par Julien Boudry</em><br>
 
 	<h1><?php echo GROUPE ;?></h1>	
@@ -48,6 +61,8 @@ $( ".accordion" ).accordion({ active: false, collapsible: true });
 		|
 		Ratio Votants / Candidats :
 		<?php echo round( $calculator->countVotes() / $calculator->countCandidates(), 2 ) ;?>
+		<br>
+		<span style="color:green;">Calculé en {timer}</span>
 	</em>
 
 	<h2>Liste des candidats :</h2>
@@ -323,7 +338,7 @@ $( ".accordion" ).accordion({ active: false, collapsible: true });
 		</strong>
 		<strong style="color:green;">
 			<?php
-				echo number_format(microtime(true) - START, 3) . 'seconde(s) <br>';
+				echo '{timer}<br>';
 			?>
 		</strong <br><br>
  
