@@ -3,7 +3,9 @@
 
 	function get_timer ($html)
 	{
-		$timer = number_format(microtime(true) - START, 4) ;
+		global $calculator;
+
+		$timer = $calculator->getGlobalTimer();
 		$out = str_replace('{timer}', ($timer >= 2) ? $timer.' secondes' : $timer.' seconde', $html);
 
 		return $out ;
@@ -147,14 +149,14 @@ $( ".accordion" ).accordion({ active: false, collapsible: true });
 		<pre>
 		<?php print_r($calculator->getResult()); ?>
 		</pre>
-		
+		<em style="color:green;">computed in <?php echo $calculator->getLastTimer() ; ?> second(s).</em>
 		<div class="accordion">
 			<h3>Statistiques de calcul pour Schulze Winning</h3>
 			<div>
 				<pre><?php print_r($calculator->getResultStats()); ?></pre>
 			</div>
 		</div>
-	
+
 	</section>
 	
 	<section class="method">
@@ -164,14 +166,14 @@ $( ".accordion" ).accordion({ active: false, collapsible: true });
 		<pre>
 		<?php print_r($calculator->getResult('Schulze_Margin')); ?>
 		</pre>
-		
+		<em style="color:green;">computed in <?php echo $calculator->getLastTimer() ; ?> second(s).</em>
 		<div class="accordion">
 			<h3>Statistiques de calcul pour Schulze Margin</h3>
 			<div>
 				<pre><?php print_r($calculator->getResultStats('Schulze_Margin')); ?></pre>
 			</div>
 		</div>
-		
+
 	</section>
 		
 	<section class="method">
@@ -181,20 +183,23 @@ $( ".accordion" ).accordion({ active: false, collapsible: true });
 		<pre>
 		<?php print_r($calculator->getResult('Schulze_Ratio')); ?>
 		</pre>
-		
+		<em style="color:green;">computed in <?php echo $calculator->getLastTimer() ; ?> second(s).</em>
 		<div class="accordion">
 			<h3>Statistiques de calcul pour Schulze Ratio</h3>
 			<div>
 				<pre><?php print_r($calculator->getResultStats('Schulze_Ratio')); ?></pre>
 			</div>
 		</div>
-	
+
 	</section>
 	
 	<section class="method">
 	
 		<h2>Classement d'après <a target="blank" href="http://en.wikipedia.org/wiki/Kemeny-Young_method">Kemeny-Young</a> :</h2>
 		<?php 
+			$calculator->getResult('KemenyYoung');
+			$kemTimer = $calculator->getLastTimer();
+
 			if ( !is_array( $calculator->getResult( 'KemenyYoung', array('noConflict' => true) ) ) )
 			{
 				echo '<strong style="color:red;">Résultat Kemeny-Young detecté arbitraire : '.'Kemeny-Young rencontre '.explode(';',$calculator->getResult('KemenyYoung', array('noConflict' => true)))[0].' solutions possibles avec un score commun de '.explode(';',$calculator->getResult('KemenyYoung', array('noConflict' => true)))[1].'. Le classement suivant est l\'un de ces prétendants finaux arbitrairement choisi.</strong>' ;
@@ -208,7 +213,7 @@ $( ".accordion" ).accordion({ active: false, collapsible: true });
 		<pre>
 		<?php print_r($calculator->getResult('KemenyYoung')); ?>
 		</pre>
-		
+		<em style="color:green;">computed in <?php echo $kemTimer ; ?> second(s).</em>
 		<div class="accordion">
 			<h3>Statistiques de calcul pour Kemeny-Young</h3>
 			<div>
@@ -225,7 +230,7 @@ $( ".accordion" ).accordion({ active: false, collapsible: true });
 		<pre>
 		<?php print_r($calculator->getResult('Copeland')); ?>
 		</pre>
-		
+		<em style="color:green;">computed in <?php echo $calculator->getLastTimer() ; ?> second(s).</em>
 		<div class="accordion">
 			<h3>Statistiques de calcul pour Copeland</h3>
 			<div>
@@ -243,7 +248,7 @@ $( ".accordion" ).accordion({ active: false, collapsible: true });
 		<pre>
 		<?php print_r($calculator->getResult('Minimax_Winning')); ?>
 		</pre>
-		
+		<em style="color:green;">computed in <?php echo $calculator->getLastTimer() ; ?> second(s).</em>
 		<div class="accordion">
 			<h3>Statistiques de calcul pour Minimax Winning</h3>
 			<div>
@@ -261,7 +266,7 @@ $( ".accordion" ).accordion({ active: false, collapsible: true });
 		<pre>
 		<?php print_r($calculator->getResult('Minimax_Margin')); ?>
 		</pre>
-		
+		<em style="color:green;">computed in <?php echo $calculator->getLastTimer() ; ?> second(s).</em>
 		<div class="accordion">
 			<h3>Statistiques de calcul pour Minimax Margin</h3>
 			<div>
@@ -279,7 +284,7 @@ $( ".accordion" ).accordion({ active: false, collapsible: true });
 		<pre>
 		<?php print_r($calculator->getResult('Minimax_Opposition')); ?>
 		</pre>
-		
+		<em style="color:green;">computed in <?php echo $calculator->getLastTimer() ; ?> second(s).</em>
 		<div class="accordion">
 			<h3>Statistiques de calcul pour Minimax Opposition</h3>
 			<div>
@@ -296,7 +301,7 @@ $( ".accordion" ).accordion({ active: false, collapsible: true });
 		<pre>
 		<?php print_r($calculator->getResult('RankedPairs')); ?>
 		</pre>
-		
+		<em style="color:green;">computed in <?php echo $calculator->getLastTimer() ; ?> second(s).</em>
 		<div class="accordion">
 			<h3>Statistiques de calcul pour Ranked Pairs</h3>
 			<div>
@@ -350,3 +355,4 @@ $( ".accordion" ).accordion({ active: false, collapsible: true });
 
  </body>
  </html> 
+ <?php ob_flush(); ?>
